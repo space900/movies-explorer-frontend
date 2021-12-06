@@ -8,7 +8,23 @@
 }
 
 .intro__background {
+    background-image: url(../../../src/images/main_background.png);
+    background-repeat: no-repeat;
+    position: relative;
     display: flex;
+    justify-content: center;
     margin: auto;
     margin-top: 82px;
+    max-width: 320px;
+    height: 320px;
+}
+
+.intro__header {
+    min-width: 730px;
+    margin: auto;
+    text-align: center;
+    font-size: 50px;
+    line-height: 58px;
+    font-style: normal;
+    font-weight: 400;
 }

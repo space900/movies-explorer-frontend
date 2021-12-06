@@ -1,6 +1,7 @@
 .page {
     margin: auto;
     box-sizing: border-box;
+    font-family: 'Inter', Arial, serif;
     min-width: 320px;
     min-height: 100vh;
     background-color: #DDDEE3;
