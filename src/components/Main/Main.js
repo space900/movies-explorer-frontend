@@ -5,7 +5,7 @@ function Main() {
         <section className="intro">
             <div className="intro__block">
                 <div className="intro__background">
-                    <h1 className="intro__header">Учебный проект студента факультета Веб-разработки.</h1>
+                    <h1 className="intro__title">Учебный проект студента факультета Веб-разработки.</h1>
                  </div>
             </div>
         </section>
