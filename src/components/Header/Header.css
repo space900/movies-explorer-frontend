@@ -1,0 +1,9 @@
+.header {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__nav {
+    display: flex;
+}

@@ -1,0 +1,14 @@
+.intro__block {
+    margin: auto;
+    max-width: 730px;
+}
+
+.intro__text {
+    text-align: center;
+}
+
+.intro__background {
+    display: flex;
+    margin: auto;
+    margin-top: 82px;
+}

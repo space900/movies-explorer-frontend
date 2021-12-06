@@ -1,12 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
+// import { Route } from 'react-router-dom';
+// import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
+import Main from './components/Main/Main';
 
 function App() {
   return (
-    <Header>
-      
-    </Header>
+    <>
+      <div className="page">
+        <Header />
+        <Main />
+      </div>
+    </>
   );
 }
 
