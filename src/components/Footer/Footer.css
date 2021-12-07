@@ -35,6 +35,21 @@
     gap: 20px;
 }
 
+.footer__link {
+    display: grid;
+    margin: 20px 0;
+    text-decoration: none;
+    color: #000;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    transition: 0.2s;
+}
+
+.footer__link:hover {
+    opacity: 0.7;
+}
+
 .footer__copyright {
     margin: 20px 0;
     color: #000;

@@ -55,6 +55,20 @@
     gap: 40px;
 }
 
+.menu__link {
+    text-decoration: none;
+    color: #000;
+    transition: 0.2s;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.menu__link:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
 .about {
     padding: 0 70px;
     height: 610px;
@@ -189,4 +203,114 @@
     height: 60px;
     background-color: #E8E8E8;
     border-radius: 10px;
+}
+
+.person {
+    padding: 0 70px;
+    background-color: #FAFAFA;
+    height: 1080px;
+}
+
+.person__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding-top: 70px;
+}
+
+.person__container {
+    max-width: 600px;
+    width: 100%;
+    /* height: 327px;
+    display: grid;
+    grid-template-rows: auto auto 120px auto; */
+}
+
+.person__title_position {
+    text-align: left;
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+.person__subtitle {
+    margin: 0 0 25px;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.person__description {
+    text-align: left;
+    margin: 0 0 100px;
+    padding: 0;
+    max-width: 600px;
+    line-height: 22px;
+}
+
+.person__image {
+    width: 270px;
+    border-radius: 10px;
+}
+
+.person__links {
+    display: flex;
+    gap: 20px;
+}
+
+.person__link {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 500;
+}
+
+.person__portfolio {
+    padding-top: 100px;
+}
+
+.portfolio__description {
+    font-weight: 400;
+    color: #A0A0A0;
+}
+
+.portfolio__list {
+    display: grid;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.portfolio__links {
+    list-style-type: none;
+    height: 70px;
+    border-bottom: 1px solid #E8E8E8;
+    transition: 0.3s;
+}
+
+.portfolio__links:hover {
+    opacity: 0.7;
+    background-color: #E8E8E8;
+}
+
+.portfolio__links:last-child {
+    border: none;
+}
+
+.portfolio__link {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    font-size: 30px;
+    line-height: 50px;
+    font-style: 400;
+    color: #000;
+    height: 70px;
+}
+
+.portfolio__icon {
+    width: 20px;
+    height: 60px;
+    /* height: 60px; */
+    padding: 0 15px;
 }

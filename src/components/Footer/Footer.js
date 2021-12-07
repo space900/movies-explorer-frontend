@@ -9,13 +9,13 @@ function Footer() {
                 <p className="footer__copyright">&#169; Andrey Khnykin {new Date().getFullYear()}</p>
                 <ul className="footer__line-links">
                     <li>
-                        <p className="footer__link">Яндекс.Практикум</p>
+                        <a href="https://practicum.yandex.ru/" target="_blank" rel="noreferrer" className="footer__link">Яндекс.Практикум</a>
                     </li>
                     <li>
-                        <p className="footer__link">Github</p>
+                        <a href="https://github.com/space900" target="_blank" rel="noreferrer" className="footer__link">Github</a>
                     </li>
                     <li>
-                        <p className="footer__link">Facebook</p>
+                        <a href="https://facebook.com/" target="_blank" rel="noreferrer" className="footer__link">Facebook</a>
                     </li>
                 </ul>
             </nav>
