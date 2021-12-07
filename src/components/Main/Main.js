@@ -1,8 +1,16 @@
 import React from "react";
-import person from "../../../src/images/person_image.jpg";
+import person from "../../../src/images/person_image.png";
 import portfolio from "../../../src/images/portfolio_icon.svg";
 
 function Main() {
+
+  function behaviorSmooth(evt) {
+      evt.preventDefault();
+      document.querySelector(evt.target.getAttribute('href')).scrollIntoView({
+          behavior: "smooth",
+      });
+  }
+
   return (
     <main className="content">
       <section className="intro">
@@ -19,13 +27,13 @@ function Main() {
         <nav className="menu__list">
           <ul className="menu__list-links">
             <li>
-              <a href="#about" className="menu__link">О проекте</a>
+              <a href="#about" onClick={behaviorSmooth} className="menu__link">О проекте</a>
             </li>
             <li>
-              <a href="#tech" className="menu__link">Технологии</a>
+              <a href="#tech" onClick={behaviorSmooth} className="menu__link">Технологии</a>
             </li>
             <li>
-              <a href="#person" className="menu__link">Студент</a>
+              <a href="#person" onClick={behaviorSmooth} className="menu__link">Студент</a>
             </li>
           </ul>
         </nav>

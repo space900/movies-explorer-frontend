@@ -13,6 +13,10 @@
 
 @import url(./components/Main/Main.css);
 
+/* Movies */
+
+@import url(./components/Movies/Movies.css);
+
 /* Footer */
 
 @import url(./components/Footer/Footer.css);

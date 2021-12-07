@@ -24,10 +24,19 @@
     font-style: normal;
     font-weight: 500;
     transition: 0.2s;
+    height: 32px;
+    width: 97px;
+    display: grid;
+    align-items: center;
+    border-radius: 3px;
 }
 
 .header__link:hover {
     background-color: #3456F3;
     color: #ffffff;
     cursor: pointer;
+}
+
+.header__link_entry {
+    width: 76px;
 }
