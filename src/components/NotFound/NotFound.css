@@ -1,0 +1,37 @@
+.page-error {
+    height: 100vh;
+    background-color: #FAFAFA;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    gap: 5px;
+}
+
+.page-error__title {
+    font-size: 140px;
+    line-height: 170px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.page-error__text {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.page-error__button {
+    background-color: #FAFAFA;
+    color: #3456F3;
+    border: none;
+    margin-top: 180px;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.page-error__button:hover {
+    opacity: 0.7;
+}

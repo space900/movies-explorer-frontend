@@ -17,6 +17,26 @@
 
 @import url(./components/Movies/Movies.css);
 
+/* Form */
+
+@import url(./components/Form/Form.css);
+
+/* Login */
+
+@import url(./components/Login/Login.css);
+
+/* Register */
+
+@import url(./components/Register/Register.css);
+
+/* Profile */
+
+@import url(./components/Profile/Profile.css);
+
+/* NotFound */
+
+@import url(./components/NotFound/NotFound.css);
+
 /* Footer */
 
 @import url(./components/Footer/Footer.css);

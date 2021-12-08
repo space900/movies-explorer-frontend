@@ -6,7 +6,7 @@ function SearchForm() {
 
             <div className="search__box">
                 <div className="search__container">
-                    <form className="search__form" method="get" action="">
+                    <form className="search__form">
                         <input className="search__input"
                             name="search"
                             required
