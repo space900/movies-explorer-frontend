@@ -64,6 +64,12 @@
     font-size: 14px;
     line-height: 17px;
     font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form__submit:hover {
+    opacity: 0.8;
 }
 
 .form__text {

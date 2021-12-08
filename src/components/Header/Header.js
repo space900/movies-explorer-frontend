@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../../src/images/header_logo.png';
 
 function Header() {
@@ -6,8 +7,8 @@ function Header() {
         <header className="header">
             <img src={logo} alt="логотип сайта" className="header__logo" />
             <div className="header__nav">
-                <h2 className="header__link">Регистрация</h2>
-                <h2 className="header__link header__link_entry">Войти</h2>
+                <Link to="signup" className="header__link">Регистрация</Link>
+                <Link to="login" className="header__link header__link_entry">Войти</Link>
             </div>
         </header>
     );

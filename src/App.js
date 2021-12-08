@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Route, useNavigate } from 'react-router-dom';
-// import { Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
@@ -22,16 +22,37 @@ function App() {
 
   return (
     <>
-      <div className="page">
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact>
+            <Header />
+            <Main />
+            <Footer />
+          </Route>
+          <Route exact path="/profile">
+            <Header />
+            <Profile />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup" exact>
+            <Register />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+      {/* <div className="page">
         <Header />
         <Main />
         <Login />
         <Register />
         <Profile />
         <NotFound />
-        {/* <SearchForm /> */}
         <Footer />
-      </div>
+      </div> */}
     </>
   );
 }

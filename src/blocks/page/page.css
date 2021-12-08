@@ -2,7 +2,7 @@
     background-color: #001;
 } */
 
-.page {
+body {
     margin: auto;
     box-sizing: border-box;
     font-family: 'Inter', Arial, serif;
