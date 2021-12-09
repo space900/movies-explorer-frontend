@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../../src/images/header_logo.png";
+import burger from "../../../src/images/burger.svg";
 
 function Profile(props) {
   const location = useLocation();
+  const isMobile = window.matchMedia("(max-width: 1023px)").matches;
   return (
     <section className="profile">
       {location.pathname === "/profile" && (
@@ -11,6 +13,11 @@ function Profile(props) {
           <Link to="/">
             <img src={logo} alt="логотип сайта" className="header__logo" />
           </Link>
+          {isMobile ? (
+            <img src={burger} className="header__burger" alt="Мобильное меню" />
+          ) : (
+            ""
+          )}
 
           <nav className="header__nav_movies">
             <Link to="/movies" className="header__movies">
@@ -21,9 +28,7 @@ function Profile(props) {
             </Link>
             <Link to="/profile" className="header__movies header__account_grid">
               <p className="header__movies header__account">Аккаунт</p>
-              <div
-                className="header__account_icon"
-              />
+              <div className="header__account_icon" />
             </Link>
           </nav>
         </div>
@@ -35,7 +40,7 @@ function Profile(props) {
           <input
             className="profile__label"
             placeholder="name"
-            value="Виталий"
+            defaultValue="Виталий"
             id="name"
             disabled
           />
@@ -46,7 +51,7 @@ function Profile(props) {
           <input
             className="profile__label"
             placeholder="name"
-            value="pochta@yandex.ru"
+            defaultValue="pochta@yandex.ru"
             id="email"
             disabled
           />

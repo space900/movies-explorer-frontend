@@ -64,3 +64,15 @@
   color: #ee3465;
   margin-top: 0;
 }
+
+@media screen and (max-width: 750px) {
+  .profile__form {
+    width: 260px;
+    margin-top: 80px;
+  }
+
+  .profile__edit {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}

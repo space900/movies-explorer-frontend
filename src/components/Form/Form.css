@@ -15,6 +15,7 @@
   font-style: normal;
   margin: 0;
   padding-bottom: 40px;
+  width: 400px;
 }
 
 .form__auth {
@@ -111,4 +112,33 @@
   font-size: 10px;
   line-height: 12px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 750px) {
+  .form__entry {
+    width: 260px;
+    margin: auto;
+  }
+
+  .form__title {
+    text-align: center;
+  }
+
+  .form__auth,
+  .form__item,
+  .form__signup {
+    width: 100%;
+  }
+
+  .form__text,
+  .form__link {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .form__signup {
+    gap: 8px;
+    margin-top: 15px;
+    justify-content: space-evenly;
+  }
 }

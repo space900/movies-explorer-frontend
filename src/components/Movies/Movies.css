@@ -210,3 +210,68 @@ input[type="range"]::-webkit-slider-thumb {
 .movies__button:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 1023px) {
+  .movies {
+    width: 100%;
+  }
+
+  .search__container {
+    flex-direction: column;
+  }
+
+  .search__input {
+    width: 700px;
+  }
+  .movies__list {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+
+  .movies__item {
+    max-width: 340px;
+  }
+
+  .movies__image {
+    width: 100%;
+  }
+
+  .movies__item:nth-of-type(n+9) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .search {
+    width: 90%;
+  }
+
+  .search__box, .search__input, .search__form {
+    width: 100%;
+  }
+
+  /* .search__input {
+    max-width: 300px;
+  } */
+
+  .movies-box {
+    padding-top: 40px;
+  }
+
+  .movies__list {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+  }
+
+  .movies__item {
+    max-width: 300px;
+  }
+
+  .movies__item:nth-of-type(n+6) {
+    display: none;
+  }
+
+  .movies__button {
+    width: 240px;
+  }
+}

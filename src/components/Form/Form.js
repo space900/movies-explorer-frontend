@@ -33,6 +33,7 @@ function Form(props) {
             minLength="8"
             maxLength="40"
             name="email"
+            defaultValue="pochta@yandex.ru"
           />
           <span className="form__item-error"></span>
           <label className="input__label">Пароль</label>
@@ -47,7 +48,8 @@ function Form(props) {
           <span className="form__item-error"></span>
         </fieldset>
         {location.pathname === "/signin" && (
-          <Link to="/movies"
+          <Link
+            to="/movies"
             className="form__submit"
             type="submit"
             aria-label={props.buttonText}
@@ -57,7 +59,8 @@ function Form(props) {
         )}
 
         {location.pathname === "/signup" && (
-          <Link to="/signin"
+          <Link
+            to="/signin"
             className="form__submit form__submit_register"
             type="submit"
             aria-label={props.buttonText}

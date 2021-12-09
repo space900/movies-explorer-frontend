@@ -4,10 +4,12 @@ import moviesList from "./MoviesCardList";
 import likeEmpty from "../../images/like_empty.svg";
 import deleteIcon from "../../images/delete.svg";
 import logo from "../../../src/images/header_logo.png";
+import burger from "../../../src/images/burger.svg";
 import { Link, useLocation } from "react-router-dom";
 
 function Movies(props) {
   const location = useLocation();
+  const isMobile = window.matchMedia("(max-width: 1023px)").matches;
   // const [isLiked, setIsLiked] = React.useState(false);
 
   // function handleLikeClick() {
@@ -20,7 +22,11 @@ function Movies(props) {
         <Link to="/">
           <img src={logo} alt="логотип сайта" className="header__logo" />
         </Link>
-
+        {isMobile ? (
+          <img src={burger} className="header__burger" alt="Мобильное меню" />
+        ) : (
+          ""
+        )}
         <nav className="header__nav_movies">
           <Link to="/movies" className="header__movies">
             Фильмы
@@ -64,9 +70,13 @@ function Movies(props) {
             </li>
           ))}
         </ul>
-        <button className="movies__button" type="button">
-          Ещё
-        </button>
+        {location.pathname === "/movies" ? (
+          <button className="movies__button" type="button">
+            Ещё
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </section>
   );

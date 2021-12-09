@@ -15,6 +15,7 @@ function Register(props) {
           Имя
         </label>
         <input
+          defaultValue="Виталий"
           className="form__item form__item_name"
           name="name"
           minLength="2"
