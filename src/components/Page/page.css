@@ -3,21 +3,19 @@
 } */
 
 body {
-    font-family: 'Inter', Arial, serif;
-    background-color: #DDDEE3;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    
+  font-family: "Inter", Arial, serif;
+  background-color: #dddee3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
 }
 
 .page {
-    margin: auto;
-    box-sizing: border-box;
-    /* max-width: 1280px; */
-    min-width: 320px;
-    min-height: 100vh;
-
+  margin: auto;
+  box-sizing: border-box;
+  /* max-width: 1280px; */
+  min-width: 320px;
+  min-height: 100vh;
 }

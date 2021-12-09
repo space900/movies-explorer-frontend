@@ -3,12 +3,11 @@ import person from "../../../src/images/person_image.png";
 import portfolio from "../../../src/images/portfolio_icon.svg";
 
 function Main() {
-
   function behaviorSmooth(evt) {
-      evt.preventDefault();
-      document.querySelector(evt.target.getAttribute('href')).scrollIntoView({
-          behavior: "smooth",
-      });
+    evt.preventDefault();
+    document.querySelector(evt.target.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+    });
   }
 
   return (
@@ -27,13 +26,19 @@ function Main() {
         <nav className="menu__list">
           <ul className="menu__list-links">
             <li>
-              <a href="#about" onClick={behaviorSmooth} className="menu__link">О проекте</a>
+              <a href="#about" onClick={behaviorSmooth} className="menu__link">
+                О проекте
+              </a>
             </li>
             <li>
-              <a href="#tech" onClick={behaviorSmooth} className="menu__link">Технологии</a>
+              <a href="#tech" onClick={behaviorSmooth} className="menu__link">
+                Технологии
+              </a>
             </li>
             <li>
-              <a href="#person" onClick={behaviorSmooth} className="menu__link">Студент</a>
+              <a href="#person" onClick={behaviorSmooth} className="menu__link">
+                Студент
+              </a>
             </li>
           </ul>
         </nav>
@@ -95,39 +100,91 @@ function Main() {
 
       <section className="person" id="person">
         <div className="tech__box">
-            <h2 className="about__title">Студент</h2>
-            <div className="person__grid">
-                <div className="person__container">
-                    <h3 className="tech__title person__title_position">Андрей</h3>
-                    <p className="person__subtitle">Фронтенд-разработчик, 28 лет</p>
-                    <p className="tech__description person__description">
-                        Я родился и живу в Саратове, закончил факультет экономики СГУ. У
-                        меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь
-                        бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ
-                        Контур». После того, как прошёл курс по веб-разработке, начал
-                        заниматься фриланс-заказами и ушёл с постоянной работы.
-                    </p>
-                    <div className="person__links">
-                        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="person__link">Facebook</a>
-                        <a href="https://github.com/space900" rel="noreferrer" target="_blank" className="person__link">github</a>
-                    </div>
-                </div>
-                <img className="person__image" src={person} alt="фото Андрея" />
+          <h2 className="about__title">Студент</h2>
+          <div className="person__grid">
+            <div className="person__container">
+              <h3 className="tech__title person__title_position">Андрей</h3>
+              <p className="person__subtitle">Фронтенд-разработчик, 28 лет</p>
+              <p className="tech__description person__description">
+                Я родился и живу в Саратове, закончил факультет экономики СГУ. У
+                меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь
+                бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ
+                Контур». После того, как прошёл курс по веб-разработке, начал
+                заниматься фриланс-заказами и ушёл с постоянной работы.
+              </p>
+              <div className="person__links">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="person__link"
+                >
+                  Facebook
+                </a>
+                <a
+                  href="https://github.com/space900"
+                  rel="noreferrer"
+                  target="_blank"
+                  className="person__link"
+                >
+                  github
+                </a>
+              </div>
             </div>
-            <div className="person__portfolio">
-                <h3 className="person__subtitle portfolio__description">Портфолио</h3>
-                <ul className="portfolio__list">
-                    <li className="portfolio__links">
-                        <a className="portfolio__link" href="https://github.com" rel="noreferrer" target="_blank">Статичный сайт<img src={portfolio} className="portfolio__icon" alt="иконка" /></a>
-                    </li>
-                    <li className="portfolio__links">
-                        <a className="portfolio__link" href="https://github.com" rel="noreferrer" target="_blank">Адаптивный сайт<img src={portfolio} className="portfolio__icon" alt="иконка" /></a>
-                    </li>
-                    <li className="portfolio__links">
-                        <a className="portfolio__link" href="https://github.com" rel="noreferrer" target="_blank">Одностраничное приложение<img src={portfolio} className="portfolio__icon" alt="иконка" /></a>
-                    </li>
-                </ul>
-            </div>
+            <img className="person__image" src={person} alt="фото Андрея" />
+          </div>
+          <div className="person__portfolio">
+            <h3 className="person__subtitle portfolio__description">
+              Портфолио
+            </h3>
+            <ul className="portfolio__list">
+              <li className="portfolio__links">
+                <a
+                  className="portfolio__link"
+                  href="https://github.com"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Статичный сайт
+                  <img
+                    src={portfolio}
+                    className="portfolio__icon"
+                    alt="иконка"
+                  />
+                </a>
+              </li>
+              <li className="portfolio__links">
+                <a
+                  className="portfolio__link"
+                  href="https://github.com"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Адаптивный сайт
+                  <img
+                    src={portfolio}
+                    className="portfolio__icon"
+                    alt="иконка"
+                  />
+                </a>
+              </li>
+              <li className="portfolio__links">
+                <a
+                  className="portfolio__link"
+                  href="https://github.com"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Одностраничное приложение
+                  <img
+                    src={portfolio}
+                    className="portfolio__icon"
+                    alt="иконка"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
