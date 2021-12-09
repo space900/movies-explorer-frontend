@@ -1,17 +1,19 @@
 import React from "react";
 import Form from '../Form/Form';
-import { Link } from 'react-router-dom';
 
-function Login() {
+function Login(props) {
     return (
-        <Form
-            title="Рады видеть!"
-            buttonText="Войти"
-            text="Ещё не зарегистрированы?"
-            link="Регистрация"
-            rout="/login"
-        >
-        </Form>
+        <section className="login">
+            
+            <Form
+                title="Рады видеть!"
+                buttonText="Войти"
+                text="Ещё не зарегистрированы?"
+                link="Регистрация"
+                rout="/signup"
+            >
+            </Form>
+        </section>
     );
 }
 

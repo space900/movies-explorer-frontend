@@ -5,6 +5,7 @@
     align-items: center;
     padding: 20px 70px 0;
     max-width: 1280px;
+    background-color: #DDDEE3;
 }
 
 .header__logo {
@@ -15,6 +16,11 @@
 .header__nav {
     display: flex;
     gap: 30px;
+}
+
+.header__grid {
+    width: 400px;
+    padding: 30px 0 40px;
 }
 
 .header__link {
@@ -41,4 +47,57 @@
 
 .header__link_entry {
     width: 76px;
+}
+
+.header__profile {
+    max-width: 1280px;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 70px 0; 
+}
+
+.header__nav_movies {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.3s;
+}
+
+.header__movies {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #000;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.header__movies:hover {
+    opacity: 0.7;
+}
+
+.header__account {
+    line-height: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.header__account_grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 17px;
+    margin: 0 0 0 30px;
+}
+
+.header__account_icon {
+    background-color: #F4F4F4;
+    background-image: url('../../../src/images/account_icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 11px 14px;
+    width: 26px;
+    height: 30px;
+    border-radius: 4px;
 }

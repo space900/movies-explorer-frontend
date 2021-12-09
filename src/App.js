@@ -30,10 +30,9 @@ function App() {
             <Footer />
           </Route>
           <Route exact path="/profile">
-            <Header />
             <Profile />
           </Route>
-          <Route exact path="/login">
+          <Route exact path="/signin">
             <Login />
           </Route>
           <Route path="/signup" exact>
@@ -44,15 +43,6 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-      {/* <div className="page">
-        <Header />
-        <Main />
-        <Login />
-        <Register />
-        <Profile />
-        <NotFound />
-        <Footer />
-      </div> */}
     </>
   );
 }

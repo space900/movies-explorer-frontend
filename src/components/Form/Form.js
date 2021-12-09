@@ -1,10 +1,28 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import logo from '../../../src/images/header_logo.png';
+
 
 function Form(props) {
-
+    const location = useLocation();
     return (
         <div className="form__entry">
+
+            {location.pathname === "/signin" && (
+                <Link to="/">
+                    <div className="header__grid">
+                        <img src={logo} alt="логотип сайта" className="header__logo" />
+                    </div>
+                </Link>
+             )}
+            {location.pathname === "/signup" && (
+                <Link to="/">
+                    <div className="header__grid">
+                        <img src={logo} alt="логотип сайта" className="header__logo" />
+                    </div>
+                </Link>
+             )}
+
             <h2 className="form__title">{props.title}</h2>
             <form className="form__auth" /* onSubmit={handleSubmit} */>
                 <fieldset className="form__data">
@@ -16,11 +34,17 @@ function Form(props) {
                     <input className="form__item form__item_password" type="password" required={true} minLength="8" maxLength="40" name="password" />
                     <span className="form__item-error"></span>
                 </fieldset>
-                <button className="form__submit" type="submit" aria-label={props.buttonText}>{props.buttonText}</button>
+                {location.pathname === "/signin" && (
+                    <button className="form__submit" type="submit" aria-label={props.buttonText}>{props.buttonText}</button>
+                )}
+
+                {location.pathname === "/signup" && (
+                    <button className="form__submit form__submit_register" type="submit" aria-label={props.buttonText}>{props.buttonText}</button>
+                )}
             </form>
             <div className="form__signup">
                 <p className="form__text">{props.text}</p>
-                {/* <Link to={props.rout} className="form__link">{props.link}</Link> */}
+                <Link to={props.rout} className="form__link">{props.link}</Link>
             </div>
         </div>
     )
