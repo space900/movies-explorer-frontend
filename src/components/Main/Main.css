@@ -249,7 +249,7 @@
 }
 
 .person__image {
-  width: 270px;
+  max-width: 270px;
   border-radius: 10px;
 }
 
@@ -273,6 +273,7 @@
 .portfolio__description {
   font-weight: 400;
   color: #a0a0a0;
+  margin-bottom: 50px;
 }
 
 .portfolio__list {
@@ -314,4 +315,97 @@
   height: 60px;
   /* height: 60px; */
   padding: 0 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .about,
+  .tech,
+  .person {
+    padding: 0 50px;
+  }
+
+  .person {
+      height: auto;
+  }
+
+  .about__title {
+    padding-top: 90px;
+  }
+  .about,
+  .tech {
+    height: 580px;
+  }
+
+  .about__period,
+  .person__portfolio {
+    padding-top: 90px;
+  }
+
+  .info__description,
+  .tech__description,
+  .person__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .tech__title {
+    padding-top: 80px;
+  }
+
+  .tech__list {
+    gap: 10px;
+    padding-top: 80px;
+  }
+
+  .tech__link {
+    max-width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+  }
+
+  .person__grid {
+    padding-top: 65px;
+  }
+
+  .person__subtitle {
+    margin-bottom: 20px;
+  }
+  .person__title_position {
+    font-size: 40px;
+    line-height: 40px;
+    padding-top: 0;
+  }
+
+  .person__description {
+    max-width: 365px;
+    margin-bottom: 85px;
+  }
+
+  .person__image {
+    max-width: 255px;
+  }
+
+  .portfolio__link {
+    font-size: 28px;
+  }
+
+  .portfolio__icon {
+    width: 15px;
+  }
+
+  .portfolio__description {
+    margin-bottom: 50px;
+  }
+
+  .portfolio__links {
+    height: 50px;
+    display: grid;
+    align-content: center;
+  }
+
+  .person__portfolio {
+      padding-bottom: 90px;
+  }
 }

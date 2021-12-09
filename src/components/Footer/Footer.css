@@ -62,3 +62,9 @@
     line-height: 15px;
     font-weight: 400;
 }
+
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 0 35px;
+    }
+}
