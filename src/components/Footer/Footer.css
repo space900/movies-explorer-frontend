@@ -63,8 +63,41 @@
     font-weight: 400;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
     .footer {
         padding: 0 35px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .footer {
+        padding: 0 10px;
+        height: auto;
+        text-align: center;
+    }
+
+    .footer__title {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .footer__line {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-top: 30px;
+    }
+
+    .footer__line-links {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 30px;
+    }
+
+    .footer__copyright {
+        margin: 0 0 10px;
+    }
+
+    .footer__link {
+        margin: 0;
     }
 }

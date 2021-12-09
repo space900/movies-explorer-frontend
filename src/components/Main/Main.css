@@ -69,6 +69,7 @@
 .menu__link:hover {
   opacity: 0.7;
   text-decoration: underline;
+
 }
 
 .about {
@@ -264,6 +265,12 @@
   font-size: 14px;
   line-height: 17px;
   font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.person__link:hover {
+    opacity: 0.7;
 }
 
 .person__portfolio {
@@ -317,7 +324,7 @@
   padding: 0 15px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
   .about,
   .tech,
   .person {
@@ -409,3 +416,142 @@
       padding-bottom: 90px;
   }
 }
+
+@media screen and (max-width: 750px) {
+    .intro__background {
+        /* height: 248px; */
+        background-size: 248px 248px;
+        background-position: center;
+    }
+
+    .intro__title {
+        font-size: 31px;
+        line-height: 39px;
+        max-width: 300px;
+        min-width: auto;
+        margin: auto 0;
+    }
+
+    .menu__list-links {
+        gap: 25px;
+    }
+
+    .menu__link, .info__description, .tech__description {
+        font-size: 11px;
+        line-height: 16px;
+        text-decoration-line: underline;
+    }
+
+    .about, .tech, .person {
+        padding: 0 18px;
+        height: auto;
+        background-color: #fafafa;
+    }
+
+    .about__title {
+        padding-top: 70px;
+    }
+
+    .about__info {
+        gap: 15px;
+    }
+
+    .about__block {
+        padding-top: 60px;
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .info__title {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .info__description, .tech__description {
+        text-decoration-line: none;
+    }
+
+    .about__grid {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .about__period {
+        padding-top: 60px;
+        padding-bottom: 70px;
+    }
+
+    .about__period:first-of-type > .period__title {
+        background-color: #3456F3;
+        color: #ffffff;
+    }
+
+    .period__title, .period__description {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .tech__title {
+        font-size: 30px;
+        line-height: 36px;
+        padding-top: 60px;
+    }
+
+    .tech__list {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 180px;
+        padding-top: 50px;
+        padding-bottom: 70px;
+    }
+
+    .person__grid {
+        padding-top: 60px;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    
+    .person__image {
+        /* max-width: 100%; */
+        max-width: 290px;
+        width: 100%;
+    }
+
+    .person__title_position {
+        padding-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .person__portfolio {
+        padding: 70px 0;
+    }
+    
+    .person__description {
+        margin-bottom: 40px;
+    }
+
+    .portfolio__description {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 40px;
+    }
+
+    .portfolio__list {
+        justify-content: stretch;
+    }
+    .portfolio__links {
+        height: 28px;
+        align-content: baseline;
+    }
+
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 28px;
+        height: auto;
+    }
+
+    .portfolio__icon {
+        padding: 0;
+        width: 12px;
+        height: 28px;
+    }
+}
+

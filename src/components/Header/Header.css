@@ -102,8 +102,43 @@
   border-radius: 4px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
   .header {
     padding: 20px 30px 0;
   }
+}
+
+@media screen and (max-width: 750px) {
+ .header {
+   padding: 20px 15px 0;
+ }
+
+ .header__nav {
+   gap: 15px;
+ }
+ .header__link {
+   font-size: 10px;
+   line-height: 16px;
+   width: 65px;
+   color: #000;
+ }
+
+ .header__link:hover {
+   background-color: #dddee3;
+   opacity: 0.7;
+   color: #000;
+ }
+
+ .header__link_entry {
+   width: 54px;
+   color: #ffffff;
+   background-color: #3456F3;
+ }
+
+ .header__link_entry:hover {
+   opacity: 0.8;
+   color: #ffffff;
+   background-color: #3456F3;
+ }
+
 }
