@@ -69,6 +69,10 @@
   transition: 0.3s;
   padding: 0;
   margin-top: 180px;
+  display: grid;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
 }
 
 .form__submit:hover {

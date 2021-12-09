@@ -1,9 +1,17 @@
 import React from "react";
+import Preloader from "../../Preloader/Preloader";
 
 function SearchForm() {
+
+    const [search, setSearch] = React.useState(false);
+    
+    function loading() {
+        setSearch(true);
+    }
+
     return (
         <section className="search">
-
+            <Preloader isOpen={search}/>
             <div className="search__box">
                 <div className="search__container">
                     <form className="search__form">
@@ -14,7 +22,7 @@ function SearchForm() {
                             placeholder="Фильм"
                             minLength="2"
                         />
-                        <button className="search__button" type="submit" aria-label="Найти">Найти</button>
+                        <button className="search__button" onClick={loading} type="submit" aria-label="Найти">Найти</button>
                     </form>
                     <fieldset className="search__type">
                         <p className="search__title">Короткометражки</p>

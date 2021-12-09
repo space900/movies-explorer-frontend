@@ -47,23 +47,23 @@ function Form(props) {
           <span className="form__item-error"></span>
         </fieldset>
         {location.pathname === "/signin" && (
-          <button
+          <Link to="/movies"
             className="form__submit"
             type="submit"
             aria-label={props.buttonText}
-          ><Link to="/movies"></Link>
+          >
             {props.buttonText}
-          </button>
+          </Link>
         )}
 
         {location.pathname === "/signup" && (
-          <button
+          <Link to="/signin"
             className="form__submit form__submit_register"
             type="submit"
             aria-label={props.buttonText}
           >
             {props.buttonText}
-          </button>
+          </Link>
         )}
       </form>
       <div className="form__signup">

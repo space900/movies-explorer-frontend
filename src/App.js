@@ -33,6 +33,10 @@ function App() {
             <Movies />
             <Footer />
           </Route>
+          <Route path="/saved-movies" exact>
+            <Movies />
+            <Footer />
+          </Route>
           <Route exact path="/profile">
             <Profile />
           </Route>
