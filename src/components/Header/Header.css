@@ -11,6 +11,13 @@
 .header__logo {
   width: 38px;
   height: 38px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+  transform: rotate(180deg);
 }
 
 .header__nav {
