@@ -157,6 +157,7 @@ input[type="range"]::-webkit-slider-thumb {
 .movies__image {
   width: 100%;
   object-fit: cover;
+  border-radius: 6px 6px 0 0;
 }
 
 .movies__text {
