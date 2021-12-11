@@ -46,10 +46,13 @@
   height: 46px;
   width: 390px;
   padding-left: 15px;
+  transition: 0.3s;
 }
 
 .form__item:focus {
   outline: none;
+  background-color: #dddee3;
+  border: 1px solid #3456f3;
 }
 
 .form__item_email,

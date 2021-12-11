@@ -91,6 +91,7 @@
 .about__info {
   display: grid;
   gap: 25px;
+  width: 95%;
   max-width: 550px;
 }
 
@@ -222,9 +223,6 @@
 .person__container {
   max-width: 600px;
   width: 100%;
-  /* height: 327px;
-    display: grid;
-    grid-template-rows: auto auto 120px auto; */
 }
 
 .person__title_position {
@@ -340,6 +338,10 @@
   .about,
   .tech {
     height: 580px;
+  }
+
+  .about__block {
+    gap: 15px;
   }
 
   .about__period,

@@ -5,7 +5,7 @@ import burger from "../../../src/images/burger.svg";
 
 function Profile(props) {
   const location = useLocation();
-  const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+  // const isMobile = window.matchMedia("(max-width: 1023px)").matches;
   return (
     <section className="profile">
       {location.pathname === "/profile" && (
@@ -13,24 +13,19 @@ function Profile(props) {
           <Link to="/">
             <img src={logo} alt="логотип сайта" className="header__logo" />
           </Link>
-          {isMobile ? (
-            <img src={burger} className="header__burger" alt="Мобильное меню" />
-          ) : (
-            ""
-          )}
-
-          <nav className="header__nav_movies">
-            <Link to="/movies" className="header__movies">
-              Фильмы
-            </Link>
-            <Link to="/saved-movies" className="header__movies">
-              Сохранённые фильмы
-            </Link>
-            <Link to="/profile" className="header__movies header__account_grid">
-              <p className="header__movies header__account">Аккаунт</p>
-              <div className="header__account_icon" />
-            </Link>
-          </nav>
+          <img src={burger} className="header__burger" alt="Мобильное меню" />
+        <nav className="header__nav_movies">
+          <Link to="/movies" className="header__movies">
+            Фильмы
+          </Link>
+          <Link to="/saved-movies" className="header__movies">
+            Сохранённые фильмы
+          </Link>
+          <Link to="/profile" className="header__movies header__account_grid">
+            <p className="header__movies header__account">Аккаунт</p>
+            <div className="header__account_icon" />
+          </Link>
+        </nav>
         </div>
       )}
       <h1 className="profile__title">Привет, Виталий!</h1>
@@ -42,7 +37,6 @@ function Profile(props) {
             placeholder="name"
             defaultValue="Виталий"
             id="name"
-            disabled
           />
         </label>
         <span className="profile__border"></span>
@@ -53,7 +47,6 @@ function Profile(props) {
             placeholder="name"
             defaultValue="pochta@yandex.ru"
             id="email"
-            disabled
           />
         </label>
         <button className="profile__edit" type="submit">
