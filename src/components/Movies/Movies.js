@@ -1,8 +1,6 @@
 import React from "react";
 import SearchForm from "./SearchForm";
 import moviesList from "./MoviesCardList";
-import likeEmpty from "../../images/like_empty.svg";
-import deleteIcon from "../../images/delete.svg";
 import logo from "../../../src/images/header_logo.png";
 import burger from "../../../src/images/burger.svg";
 import { Link, useLocation } from "react-router-dom";
