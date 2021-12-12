@@ -143,6 +143,7 @@
   line-height: 17px;
   font-weight: 400;
   transition: 0.2s;
+  cursor: default;
 }
 
 .period__title:hover {
@@ -205,6 +206,13 @@
   height: 60px;
   background-color: #e8e8e8;
   border-radius: 10px;
+  transition: 0.3s;
+  cursor: default;
+}
+
+.tech__link:hover {
+  color: #ffffff;
+  background-color: #3456f3;
 }
 
 .person {
