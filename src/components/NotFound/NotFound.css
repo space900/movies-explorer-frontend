@@ -1,0 +1,52 @@
+.page-error {
+  height: 100vh;
+  background-color: #fafafa;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  gap: 5px;
+}
+
+.page-error__title {
+  font-size: 140px;
+  line-height: 170px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.page-error__text {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.page-error__button {
+  background-color: #fafafa;
+  color: #3456f3;
+  border: none;
+  margin-top: 180px;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.page-error__button:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 750px) {
+  .page-error__title {
+    font-size: 80px;
+    line-height: 97px;
+  }
+
+  .page-error__text,
+  .page-error__button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
