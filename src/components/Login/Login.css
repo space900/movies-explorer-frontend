@@ -1,0 +1,11 @@
+.login {
+    margin: auto;
+  }
+  
+  @media screen and (max-height: 667px) {
+    .login {
+      padding: 30px 0;
+      box-sizing: border-box;
+    }
+  }
+  
