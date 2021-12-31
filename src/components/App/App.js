@@ -42,16 +42,12 @@ function App() {
   const [profileIsBeingEdited, setProfileIsBeingEdited] = React.useState(false);
 
   const [isSideMenuPopupOpen, setSideMenuPopupOpen] = React.useState(false);
-  const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] =
-    React.useState(false);
+  const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = React.useState(false);
   const [infoTooltipMessage, setIinfoTooltipMessage] = React.useState("");
 
-  const [loginSubmitButtonText, setLoginSubmitButtonText] =
-    React.useState("Войти");
-  const [registerSubmitButtonText, setRegisterSubmitButtonText] =
-    React.useState("Зарегистрироваться");
-  const [profileSubmitButtonText, setProfileSubmitButtonText] =
-    React.useState("Сохранить");
+  const [loginSubmitButtonText, setLoginSubmitButtonText] = React.useState("Войти");
+  const [registerSubmitButtonText, setRegisterSubmitButtonText] = React.useState("Зарегистрироваться");
+  const [profileSubmitButtonText, setProfileSubmitButtonText] = React.useState("Сохранить");
 
   const history = useHistory();
 
@@ -115,8 +111,7 @@ function App() {
                 setFormErrorMessage(loginErrorMessages.UNAUTHORIZED);
                 localStorage.clear();
             }
-          })
-          
+          });
       } else {
         setCurrentUser(JSON.parse(localUserData));
         // console.log(localUserData, "в противном случае")
@@ -196,9 +191,9 @@ function App() {
 
   // const handleTokenCheck = () => {
   //   const token = localStorage.getItem('token');
-    
+
   //   console.log('вот он токен', token);
-    
+
   //     mainApi.getUserInfo()
   //     .then((res) => {
   //       if (res.data.email) {
@@ -210,11 +205,11 @@ function App() {
   //     })
   //     .catch((err)=>{
   //       console.log(err);
-        
+
   //       setLoggedIn(false);
   //       localStorage.clear()
   //     })
-    
+
   // }
 
   const handleRegistration = (data) => {
@@ -280,7 +275,7 @@ function App() {
       .signOut()
       .then(() => {
         setLoggedIn(false);
-        
+
         // localUserData = null;
         // console.log(localUserData," обнуление")
         // localStorage.removeItem("currentUser");
@@ -325,10 +320,7 @@ function App() {
     mainApi
       .deleteSavedMovie(card._id)
       .then(() => {
-        localStorage.setItem(
-          "savedMovies",
-          JSON.stringify(savedMoviesData.filter((item) => item !== card))
-        );
+        localStorage.setItem("savedMovies", JSON.stringify(savedMoviesData.filter((item) => item !== card)));
         setSavedMoviesData(savedMoviesData.filter((item) => item !== card));
       })
       .catch((e) => {
@@ -338,9 +330,7 @@ function App() {
 
   const handleCardSaveToggle = (card) => {
     if (card.isSaved) {
-      const savedMovie = savedMoviesData.find(
-        (movie) => movie.movieId === card.id
-      );
+      const savedMovie = savedMoviesData.find((movie) => movie.movieId === card.id);
       handleCardDelete(savedMovie);
     } else {
       mainApi
@@ -351,19 +341,14 @@ function App() {
           year: card.year || " ",
           description: card.description || " ",
           image: `${MOVIES_URL}${card.image.url}`,
-          trailer:
-            card.trailerLink ||
-            `https://www.youtube.com/`,
+          trailer: card.trailerLink || `https://www.youtube.com/`,
           thumbnail: `${MOVIES_URL}${card.image.formats.thumbnail.url}`,
           nameRU: card.nameRU || " ",
           nameEN: card.nameEN || " ",
           movieId: card.id,
         })
         .then((res) => {
-          localStorage.setItem(
-            "savedMovies",
-            JSON.stringify([res.data, ...savedMoviesData])
-          );
+          localStorage.setItem("savedMovies", JSON.stringify([res.data, ...savedMoviesData]));
           setSavedMoviesData([res.data, ...savedMoviesData]);
         })
         .catch((e) => {
@@ -486,16 +471,8 @@ function App() {
               </Route>
             </Switch>
           )}
-          <SideMenu
-            isOpen={isSideMenuPopupOpen}
-            onClose={closeAllPopups}
-            onMobileLink={closeAllPopups}
-          />
-          <InfoTooltip
-            isOpen={isInfoTooltipPopupOpen}
-            message={infoTooltipMessage}
-            onClose={closeAllPopups}
-          />
+          <SideMenu isOpen={isSideMenuPopupOpen} onClose={closeAllPopups} onMobileLink={closeAllPopups} />
+          <InfoTooltip isOpen={isInfoTooltipPopupOpen} message={infoTooltipMessage} onClose={closeAllPopups} />
         </div>
       </CurrentUserContext.Provider>
     </div>
