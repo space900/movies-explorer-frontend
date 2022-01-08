@@ -2,9 +2,19 @@ import { useState, useEffect } from "react";
 import "./SearchForm.css";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-function SearchForm({ onCheckboxChange, onSubmit, handleShortMovies, isSavedMovies }) {
+function SearchForm({ onCheckboxChange, onSubmit, handleShortMovies, isSavedMovies, searchValue }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSubmited, setIsSubmited] = useState(false);
+
+  useEffect(() => {
+    const localValue = localStorage.getItem('searchValue')
+
+    if(localValue && localValue.trim() !== "") {
+      setSearchQuery(localValue || "")
+      onSubmit(searchQuery);
+    } 
+  }, []);
 
   useEffect(() => {
     setErrorMessage("");
@@ -24,11 +34,13 @@ function SearchForm({ onCheckboxChange, onSubmit, handleShortMovies, isSavedMovi
   const handleSearchQueryChange = (e) => {
     const target = e.target;
     setSearchQuery(target.value);
+    localStorage.setItem("searchValue", target.value);
   };
 
   const handleCheckboxChange = (e) => {
     const target = e.target;
     onCheckboxChange(target.checked);
+    // localStorage.setItem("checkedBox", target.checked);
   };
 
   return (
@@ -41,15 +53,8 @@ function SearchForm({ onCheckboxChange, onSubmit, handleShortMovies, isSavedMovi
               id="search-form-movie"
               type="text"
               name="keyword"
-              placeholder={
-                isSavedMovies
-                  ? localStorage.getItem("lastSavedMoviesRequest")
-                    ? JSON.parse(localStorage.getItem("lastSavedMoviesRequest"))
-                    : "Фильм"
-                  : localStorage.getItem("lastMoviesRequest")
-                  ? JSON.parse(localStorage.getItem("lastMoviesRequest"))
-                  : "Фильм"
-              }
+              placeholder={localStorage.getItem("lastSearchResult") ? localStorage.getItem("searchValue") : "Фильм"}
+              value={searchQuery}
               required
               onChange={handleSearchQueryChange}
             />
@@ -59,7 +64,7 @@ function SearchForm({ onCheckboxChange, onSubmit, handleShortMovies, isSavedMovi
             Найти
           </button>
         </form>
-        <FilterCheckbox onChange={handleCheckboxChange} handleShortMovies={handleShortMovies} />
+        <FilterCheckbox onChange={handleCheckboxChange} handleShortMovies={handleShortMovies} checked={JSON.parse(localStorage.getItem('checkedBox'))} />
       </div>
     </section>
   );

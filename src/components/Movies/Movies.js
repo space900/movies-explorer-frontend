@@ -10,16 +10,8 @@ import isObjEmpty from "../../utils/isObjEmpty";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { getCardsRenderSettings } from "../../utils/cardsRenderSettings";
 
-function Movies({
-  moviesData,
-  savedMoviesData,
-  onNoMoviesData,
-  onCardSaveToggle,
-}) {
-  const [isShortfilmCheckboxOn, setIsShortfilmCheckboxOn] = useState(`${localStorage.getItem("moviesCheckBoxStatus")
-  ? JSON.parse(localStorage.getItem("moviesCheckBoxStatus"))
-  : false
- }`);
+function Movies({ moviesData, savedMoviesData, onNoMoviesData, onCardSaveToggle }) {
+  const [isShortfilmCheckboxOn, setIsShortfilmCheckboxOn] = useState(false);
   const [isFilteringMoviesData, setIsFilteringMoviesData] = useState(false);
   const [filteredMoviesData, setFilteredMoviesData] = useState([]);
   const [noMoviesFound, setNoMoviesFound] = useState(false);
@@ -31,14 +23,21 @@ function Movies({
   });
   const [numberOfCardsToRender, setNumberOfCardsToRender] = useState(0);
   const [isMoreCardsToRender, setIsMoreCardsToRender] = useState(false);
-
   const currentUser = useContext(CurrentUserContext);
   const { width } = useWindowSize();
 
-  const handleShortMovies = () => {
-    localStorage.setItem("moviesCheckBoxStatus", !isShortfilmCheckboxOn);
-    setIsShortfilmCheckboxOn(!isShortfilmCheckboxOn);
-  }
+  useEffect(() => {
+    setIsShortfilmCheckboxOn(JSON.parse(localStorage.getItem("checkedBox")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("checkedBox", isShortfilmCheckboxOn);
+  }, [isShortfilmCheckboxOn]);
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("lastSearchResult"))) {
+    }
+  }, []);
 
   useEffect(() => {
     setCardsRenderSettings(getCardsRenderSettings(width));
@@ -67,14 +66,14 @@ function Movies({
 
   useEffect(() => {
     let lastSearchResult = [];
+    let lastValue = "";
     if (localStorage.getItem("lastSearchResult")) {
       lastSearchResult = JSON.parse(localStorage.getItem("lastSearchResult"));
+      lastValue = localStorage.getItem("searchValue");
     }
 
     if (isShortfilmCheckboxOn) {
-      const lastSearchResultShortfilms = lastSearchResult.filter(
-        filterMoviesByDuration
-      );
+      const lastSearchResultShortfilms = lastSearchResult.filter(filterMoviesByDuration);
       setFilteredMoviesData(lastSearchResultShortfilms);
 
       if (lastSearchResultShortfilms.length === 0) {
@@ -87,6 +86,8 @@ function Movies({
 
   const handleCheckboxChange = (state) => {
     setIsShortfilmCheckboxOn(state);
+    console.log("state", state);
+    // console.log('set', setIsShortfilmCheckboxOn(state));
   };
 
   const handleNoMoviesData = () => {
@@ -94,15 +95,15 @@ function Movies({
   };
 
   const handleSearchFormSubmit = (searchQuery) => {
+    console.log("work - " + searchQuery);
     if (isObjEmpty(moviesData)) {
+      // console.log("isObjEmpty")
       handleNoMoviesData();
     } else {
       setIsFilteringMoviesData(true);
 
       let filteredMoviesData = [];
-      filteredMoviesData = markSavedMovies(
-        filterMovies(searchQuery, isShortfilmCheckboxOn, moviesData)
-      );
+      filteredMoviesData = markSavedMovies(filterMovies(searchQuery, isShortfilmCheckboxOn, moviesData));
 
       if (filteredMoviesData.length === 0) {
         setNoMoviesFound(true);
@@ -111,10 +112,7 @@ function Movies({
       }
 
       setFilteredMoviesData(filteredMoviesData);
-      localStorage.setItem(
-        "lastSearchResult",
-        JSON.stringify(filteredMoviesData)
-      );
+      localStorage.setItem("lastSearchResult", JSON.stringify(filteredMoviesData));
 
       setIsFilteringMoviesData(false);
     }
@@ -122,8 +120,7 @@ function Movies({
 
   const handleRenderMoreClick = () => {
     let numberOfFoundMovies = filteredMoviesData.length;
-    let newNumberOfCardsToRender =
-      numberOfCardsToRender + cardsRenderSettings.add;
+    let newNumberOfCardsToRender = numberOfCardsToRender + cardsRenderSettings.add;
 
     if (newNumberOfCardsToRender >= numberOfFoundMovies) {
       newNumberOfCardsToRender = numberOfFoundMovies;
@@ -133,29 +130,13 @@ function Movies({
   };
 
   const markSavedMovies = (movies) => {
-    const currentUserSavedMovies = savedMoviesData.filter(
-      (savedMovie) => savedMovie.owner === currentUser._id
-    );
+    const currentUserSavedMovies = savedMoviesData.filter((savedMovie) => savedMovie.owner === currentUser._id);
 
     return movies.map((movie) => {
-      const {
-        id,
-        country,
-        director,
-        duration,
-        year,
-        description,
-        image,
-        trailerLink,
-        nameRU,
-        nameEN,
-      } = movie;
+      const { id, country, director, duration, year, description, image, trailerLink, nameRU, nameEN } = movie;
 
       let isSaved = false;
-      if (
-        currentUserSavedMovies.some((savedMovie) => savedMovie.movieId === id)
-      )
-        isSaved = true;
+      if (currentUserSavedMovies.some((savedMovie) => savedMovie.movieId === id)) isSaved = true;
 
       const newMovie = {
         id,
@@ -177,12 +158,7 @@ function Movies({
 
   return (
     <main className="main page__content">
-      <SearchForm
-        onCheckboxChange={handleCheckboxChange}
-        onSubmit={handleSearchFormSubmit}
-        handleShortMovies={handleShortMovies}
-        isSavedMovies={false}
-      />
+      <SearchForm onCheckboxChange={handleCheckboxChange} onSubmit={handleSearchFormSubmit} />
       <MoviesCardList
         isFilteringMoviesData={isFilteringMoviesData}
         noMoviesFound={noMoviesFound}

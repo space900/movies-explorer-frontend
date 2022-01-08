@@ -15,17 +15,21 @@ function SavedMovies({ moviesData, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
+    setIsShortfilmCheckboxOn(JSON.parse(localStorage.getItem("checkedBox")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("checkedBox", isShortfilmCheckboxOn);
+  }, [isShortfilmCheckboxOn]);
+
+  useEffect(() => {
     let lastSearchResult = [];
     if (localStorage.getItem("lastSavedMoviesSearchResult")) {
-      lastSearchResult = JSON.parse(
-        localStorage.getItem("lastSavedMoviesSearchResult")
-      );
+      lastSearchResult = JSON.parse(localStorage.getItem("lastSavedMoviesSearchResult"));
     }
 
     if (isShortfilmCheckboxOn) {
-      const lastSearchResultShortfilms = filteredMoviesData.filter(
-        filterMoviesByDuration
-      );
+      const lastSearchResultShortfilms = filteredMoviesData.filter(filterMoviesByDuration);
       setFilteredMoviesData(lastSearchResultShortfilms);
 
       if (lastSearchResultShortfilms.length === 0) {
@@ -52,11 +56,7 @@ function SavedMovies({ moviesData, onCardDelete }) {
     setIsFilteringMoviesData(true);
 
     let filteredMoviesData = [];
-    filteredMoviesData = filterMovies(
-      searchQuery,
-      isShortfilmCheckboxOn,
-      filterCurrentUserMoviesData(moviesData)
-    );
+    filteredMoviesData = filterMovies(searchQuery, isShortfilmCheckboxOn, filterCurrentUserMoviesData(moviesData));
 
     if (filteredMoviesData.length === 0) {
       setNoMoviesFound(true);
@@ -65,19 +65,13 @@ function SavedMovies({ moviesData, onCardDelete }) {
     }
 
     setFilteredMoviesData(filteredMoviesData);
-    localStorage.setItem(
-      "lastSavedMoviesSearchResult",
-      JSON.stringify(filteredMoviesData)
-    );
+    localStorage.setItem("lastSavedMoviesSearchResult", JSON.stringify(filteredMoviesData));
 
     setIsFilteringMoviesData(false);
   };
 
   const filterCurrentUserMoviesData = (moviesData) => {
-    return moviesData.filter(
-      (card) =>
-        !card.owner || (card.owner._id ?? card.owner) === currentUser._id
-    );
+    return moviesData.filter((card) => !card.owner || (card.owner._id ?? card.owner) === currentUser._id);
   };
 
   const handleCardDelete = (card) => {
@@ -86,11 +80,7 @@ function SavedMovies({ moviesData, onCardDelete }) {
 
   return (
     <main className="main page__content">
-      <SearchForm
-        onCheckboxChange={handleCheckboxChange}
-        onSubmit={handleSearchFormSubmit}
-        isSavedMovies={true}
-      />
+      <SearchForm onCheckboxChange={handleCheckboxChange} onSubmit={handleSearchFormSubmit} isSavedMovies={true} />
       <MoviesCardList
         isFilteringMoviesData={isFilteringMoviesData}
         noMoviesFound={noMoviesFound}
