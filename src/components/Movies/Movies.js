@@ -1,73 +1,173 @@
-import React from "react";
-import SearchForm from "./SearchForm";
-import moviesList from "./MoviesCardList";
-import logo from "../../../src/images/header_logo.png";
-import burger from "../../../src/images/burger.svg";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
-function Movies(props) {
-  const location = useLocation();
-  // const isMobile = window.matchMedia("(max-width: 1023px)").matches;
-  // const [isLiked, setIsLiked] = React.useState(false);
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-  // function handleLikeClick() {
-  //     setIsLiked(true);
-  // }
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
+import { filterMovies, filterMoviesByDuration } from "../../utils/filterMovies";
+import isObjEmpty from "../../utils/isObjEmpty";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { getCardsRenderSettings } from "../../utils/cardsRenderSettings";
+
+function Movies({ moviesData, savedMoviesData, onNoMoviesData, onCardSaveToggle }) {
+  const [isShortfilmCheckboxOn, setIsShortfilmCheckboxOn] = useState(false);
+  const [isFilteringMoviesData, setIsFilteringMoviesData] = useState(false);
+  const [filteredMoviesData, setFilteredMoviesData] = useState([]);
+  const [noMoviesFound, setNoMoviesFound] = useState(false);
+  const [prevRenderedCards, setPrevRenderedCards] = useState([]);
+  const [cardsToRender, setCardsToRender] = useState([]);
+  const [cardsRenderSettings, setCardsRenderSettings] = useState({
+    total: 12,
+    add: 3,
+  });
+  const [numberOfCardsToRender, setNumberOfCardsToRender] = useState(0);
+  const [isMoreCardsToRender, setIsMoreCardsToRender] = useState(false);
+  const currentUser = useContext(CurrentUserContext);
+  const { width } = useWindowSize();
+
+  useEffect(() => {
+    setIsShortfilmCheckboxOn(JSON.parse(localStorage.getItem("checkedBox")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("checkedBox", isShortfilmCheckboxOn);
+  }, [isShortfilmCheckboxOn]);
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("lastSearchResult"))) {
+    }
+  }, []);
+
+  useEffect(() => {
+    setCardsRenderSettings(getCardsRenderSettings(width));
+  }, [width]);
+
+  useEffect(() => {
+    setCardsToRender(filteredMoviesData.slice(0, numberOfCardsToRender));
+    setPrevRenderedCards(filteredMoviesData.slice(0, numberOfCardsToRender));
+  }, [filteredMoviesData, numberOfCardsToRender]);
+
+  useEffect(() => {
+    if (filteredMoviesData.length <= cardsRenderSettings.total) {
+      setNumberOfCardsToRender(filteredMoviesData.length);
+      setIsMoreCardsToRender(false);
+    } else {
+      setNumberOfCardsToRender(cardsRenderSettings.total);
+      setIsMoreCardsToRender(true);
+    }
+  }, [filteredMoviesData, cardsRenderSettings]);
+
+  useEffect(() => {
+    if (!isObjEmpty(savedMoviesData)) {
+      setCardsToRender(markSavedMovies(prevRenderedCards));
+    }
+  }, [savedMoviesData, prevRenderedCards]);
+
+  useEffect(() => {
+    let lastSearchResult = [];
+    let lastValue = "";
+    if (localStorage.getItem("lastSearchResult")) {
+      lastSearchResult = JSON.parse(localStorage.getItem("lastSearchResult"));
+      lastValue = localStorage.getItem("searchValue");
+    }
+
+    if (isShortfilmCheckboxOn) {
+      const lastSearchResultShortfilms = lastSearchResult.filter(filterMoviesByDuration);
+      setFilteredMoviesData(lastSearchResultShortfilms);
+
+      if (lastSearchResultShortfilms.length === 0) {
+        setNoMoviesFound(true);
+      }
+    } else {
+      setFilteredMoviesData(lastSearchResult);
+    }
+  }, [isShortfilmCheckboxOn]);
+
+  const handleCheckboxChange = (state) => {
+    setIsShortfilmCheckboxOn(state);
+    console.log("state", state);
+    // console.log('set', setIsShortfilmCheckboxOn(state));
+  };
+
+  const handleNoMoviesData = () => {
+    onNoMoviesData();
+  };
+
+  const handleSearchFormSubmit = (searchQuery) => {
+    console.log("work - " + searchQuery);
+    if (isObjEmpty(moviesData)) {
+      // console.log("isObjEmpty")
+      handleNoMoviesData();
+    } else {
+      setIsFilteringMoviesData(true);
+
+      let filteredMoviesData = [];
+      filteredMoviesData = markSavedMovies(filterMovies(searchQuery, isShortfilmCheckboxOn, moviesData));
+
+      if (filteredMoviesData.length === 0) {
+        setNoMoviesFound(true);
+      } else {
+        setNoMoviesFound(false);
+      }
+
+      setFilteredMoviesData(filteredMoviesData);
+      localStorage.setItem("lastSearchResult", JSON.stringify(filteredMoviesData));
+
+      setIsFilteringMoviesData(false);
+    }
+  };
+
+  const handleRenderMoreClick = () => {
+    let numberOfFoundMovies = filteredMoviesData.length;
+    let newNumberOfCardsToRender = numberOfCardsToRender + cardsRenderSettings.add;
+
+    if (newNumberOfCardsToRender >= numberOfFoundMovies) {
+      newNumberOfCardsToRender = numberOfFoundMovies;
+      setIsMoreCardsToRender(false);
+    }
+    setNumberOfCardsToRender(newNumberOfCardsToRender);
+  };
+
+  const markSavedMovies = (movies) => {
+    const currentUserSavedMovies = savedMoviesData.filter((savedMovie) => savedMovie.owner === currentUser._id);
+
+    return movies.map((movie) => {
+      const { id, country, director, duration, year, description, image, trailerLink, nameRU, nameEN } = movie;
+
+      let isSaved = false;
+      if (currentUserSavedMovies.some((savedMovie) => savedMovie.movieId === id)) isSaved = true;
+
+      const newMovie = {
+        id,
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+        isSaved: isSaved,
+      };
+
+      return newMovie;
+    });
+  };
 
   return (
-    <section className="movies">
-      <div className="header__profile">
-        <Link to="/">
-          <img src={logo} alt="логотип сайта" className="header__logo" />
-        </Link>
-
-        <img src={burger} className="header__burger" alt="Мобильное меню" />
-        <nav className="header__nav_movies">
-          <Link to="/movies" className="header__movies">
-            Фильмы
-          </Link>
-          <Link to="/saved-movies" className="header__movies">
-            Сохранённые фильмы
-          </Link>
-          <Link to="/profile" className="header__movies header__account_grid">
-            <p className="header__movies header__account">Аккаунт</p>
-            <div className="header__account_icon" />
-          </Link>
-        </nav>
-      </div>
-
-      <SearchForm />
-      <ul className="movies__list">
-        {moviesList.map((i) => (
-          <li className="movies__item">
-            <img className="movies__image" src={i.img} alt={i.title} />
-            <div className="movies__text">
-              <p className="movies__title">{i.title}</p>
-              <p className="movies__duration">{i.duration}</p>
-              {/* <img src={like} className={`movies__icon_hidden ${isLiked ? ('movies__icon_active') : ''}`} alt="лайк" /> */}
-            </div>
-            {location.pathname === "/saved-movies" ? (
-              <button
-                className="movies__icon movies__icon_delete"
-                aria-label="Удалить"
-                type="button"
-              />
-            ) : (
-              <button className="movies__icon" aria-label="Лайк" type="button" />
-            )}
-          </li>
-        ))}
-      </ul>
-      {location.pathname === "/movies" ? (
-        <div className="button__box">
-        <button className="movies__button" type="button">
-          Ещё
-        </button>
-        </div>
-      ) : (
-        ""
-      )}
-    </section>
+    <main className="main page__content">
+      <SearchForm onCheckboxChange={handleCheckboxChange} onSubmit={handleSearchFormSubmit} />
+      <MoviesCardList
+        isFilteringMoviesData={isFilteringMoviesData}
+        noMoviesFound={noMoviesFound}
+        cards={cardsToRender}
+        onCardSaveToggle={onCardSaveToggle}
+        onRenderMoreClick={handleRenderMoreClick}
+        isMoreCardsToRender={isMoreCardsToRender}
+      />
+    </main>
   );
 }
 

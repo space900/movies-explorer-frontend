@@ -1,19 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../../src/images/header_logo.png";
+import "./Header.css";
 
-function Header() {
+import LogoLink from "../LogoLink/LogoLink";
+import Navigation from "../Navigation/Navigation";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
+import BurgerButton from "../BurgerButton/BurgerButton";
+
+function Header({ loggedIn, headerModifier, onOpenMenu }) {
+
+  const headerClassName = `header ${
+    !headerModifier ? "" : headerModifier
+  } page__header`;
+
   return (
-    <header className="header">
-      <img src={logo} alt="логотип сайта" className="header__logo" />
-      <nav className="header__nav">
-        <Link to="signup" className="header__link">
-          Регистрация
-        </Link>
-        <Link to="signin" className="header__link header__link_entry">
-          Войти
-        </Link>
-      </nav>
+    <header className={headerClassName}>
+      <div className="header__container">
+        <LogoLink />
+        {loggedIn ? <Navigation /> : <AuthNavigation />}
+        {loggedIn && <BurgerButton onOpenMenu={onOpenMenu} />}
+        {/* {location.pathname === "/profile" ? (<Header className="_profile" />) : ""} */}
+      </div>
     </header>
   );
 }

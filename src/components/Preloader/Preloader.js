@@ -1,9 +1,9 @@
 import React from "react";
 import "./Preloader.css";
 
-const Preloader = (props) => {
+const Preloader = () => {
   return (
-    <div className={`preloader ${props.isOpen ? "preloader__visible" : ""}`}>
+    <div className="preloader">
       <div className="preloader__container">
         <span className="preloader__round"></span>
       </div>

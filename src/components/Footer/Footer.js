@@ -1,48 +1,45 @@
 import React from "react";
+import "./Footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
+  const footerLinks = [
+    {
+      title: "Яндекс.Практикум",
+      link: "https://practicum.yandex.ru",
+    },
+    {
+      title: "GitHub",
+      link: "https://github.com/",
+    },
+    {
+      title: "Facebook",
+      link: "https://facebook.com",
+    },
+  ];
+
   return (
-    <footer className="footer">
-      <div className="footer__box">
-        <h3 className="footer__title">
+    <footer className="footer page__footer">
+      <div className="footer__container">
+        <p className="footer__title">
           Учебный проект Яндекс.Практикум х BeatFilm.
-        </h3>
-        <div className="footer__border" />
-        <nav className="footer__line">
+        </p>
+        <div className="footer__content">
           <p className="footer__copyright">&#169; {new Date().getFullYear()}</p>
-          <ul className="footer__line-links">
-            <li>
-              <a
-                href="https://practicum.yandex.ru/"
-                target="_blank"
-                rel="noreferrer"
-                className="footer__link"
-              >
-                Яндекс.Практикум
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/space900"
-                target="_blank"
-                rel="noreferrer"
-                className="footer__link"
-              >
-                Github
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://facebook.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="footer__link"
-              >
-                Facebook
-              </a>
-            </li>
+          <ul className="footer__links">
+            {footerLinks.map((item, i) => (
+              <li key={i}>
+                <Link
+                  className="footer__link"
+                  to={{ pathname: item.link }}
+                  target="_blank"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
           </ul>
-        </nav>
+        </div>
       </div>
     </footer>
   );

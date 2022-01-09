@@ -1,32 +1,85 @@
-import React from "react";
-import Form from "../Form/Form";
+import React, { useEffect } from "react";
+import "./Register.css";
 
-function Register(props) {
+import LogoLink from "../LogoLink/LogoLink";
+import AuthForm from "../AuthForm/AuthForm";
+
+import useFormWithValidation from "../../hooks/useFormWithValidation";
+import { patterns, customErrorMessages } from "../../utils/constants";
+
+function Register({
+  submitButtonText,
+  onRegistration,
+  authErrorMessage,
+  resetFormErrorMessage,
+}) {
+  const { values, errors, isValid, handleChange } = useFormWithValidation({});
+
+  useEffect(() => {
+    resetFormErrorMessage();
+  }, [values]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onRegistration(values);
+  };
+
+  const INPUTS_DATA = [
+    {
+      key: 1,
+      type: "text",
+      id: "signin-name",
+      label: "Имя",
+      placeholder: "Имя",
+      name: "name",
+      required: true,
+      pattern: patterns.NAME,
+      customErrorMessage: customErrorMessages.NAME,
+    },
+    {
+      key: 2,
+      type: "email",
+      id: "signin-email",
+      label: "E-mail",
+      placeholder: "E-mail",
+      name: "email",
+      required: true,
+      pattern: patterns.EMAIL,
+      customErrorMessage: customErrorMessages.EMAIL,
+    },
+    {
+      key: 3,
+      type: "password",
+      id: "signin-password",
+      label: "Пароль",
+      placeholder: "Пароль",
+      name: "password",
+      minLength: 8,
+      required: true,
+      customErrorMessage: customErrorMessages.PASSWORD,
+    },
+  ];
+
   return (
-    <section className="login">
-      <Form
-        title="Добро пожаловать!"
-        buttonText="Зарегистрироваться"
-        text="Уже зарегистрированы?"
-        link="Войти"
-        rout="/signin"
-      >
-        <label className="input__label" htmlFor="name">
-          Имя
-        </label>
-        <input
-          defaultValue="Виталий"
-          className="form__item form__item_name"
-          name="name"
-          minLength="2"
-          maxLength="40"
-          required={true}
-          id="name"
-          type="text"
-        />
-        <span className="form__item-error"></span>
-      </Form>
-    </section>
+    <div className="register">
+      <LogoLink logoLinkModifier="logo-link_place_form" />
+      <AuthForm
+        name="signup-form"
+        heading="Добро пожаловать!"
+        inputsData={INPUTS_DATA}
+        submitGroupModifier="submit-group_place_singup"
+        errorMessage={authErrorMessage}
+        submitButtonText={submitButtonText}
+        formText="Уже зарегистрированы?"
+        linkPath="/signin"
+        linkText=" Войти"
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        values={values}
+        errors={errors}
+        isValid={isValid}
+      />
+    </div>
   );
 }
 

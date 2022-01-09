@@ -1,12 +1,11 @@
 .login {
-  height: 100vh;
-  background-color: #fafafa;
-}
-
-/* 
-
-.login__header {
-    background-color: #FAFAFA;
-    max-width: 400px;
-    padding: 70px 0 0;
-} */
+    margin: auto;
+  }
+  
+  @media screen and (max-height: 667px) {
+    .login {
+      padding: 30px 0;
+      box-sizing: border-box;
+    }
+  }
+  

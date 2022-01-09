@@ -1,6 +1,6 @@
-import React from "react";
-import person from "../../../src/images/person_image.png";
-import portfolio from "../../../src/images/portfolio_icon.svg";
+import "./Main.css";
+import { Link } from "react-router-dom";
+import personImage from "../../images/person_image.png";
 
 function Main() {
   function behaviorSmooth(evt) {
@@ -10,15 +10,49 @@ function Main() {
     });
   }
 
+  const techList = [
+    "HTML",
+    "CSS",
+    "JS",
+    "React",
+    "Git",
+    "Express.js",
+    "mongoDB",
+  ];
+
+  const linksAbout = [
+    {
+      title: "Facebook",
+      link: "https://facebook.com",
+    },
+    {
+      title: "Github",
+      link: "https://github.com/space900",
+    },
+  ];
+
+  const portfolioList = [
+    {
+      title: "Статичный сайт",
+      link: "https://github.com/space900",
+    },
+    {
+      title: "Адаптивный сайт",
+      link: "https://github.com/space900",
+    },
+    {
+      title: "Одностраничное приложение",
+      link: "https://github.com/space900",
+    },
+  ];
+
   return (
-    <main className="content">
-      <section className="intro">
-        <div className="intro__block">
-          <div className="intro__background">
-            <h1 className="intro__title">
-              Учебный проект студента факультета Веб-разработки.
-            </h1>
-          </div>
+    <main className="main page__content">
+      <section className="promo main__section">
+        <div className="promo__container main__section-container main__section-container_size_xs">
+          <h1 className="promo__title">
+            Учебный проект студента факультета Веб-разработки.
+          </h1>
         </div>
       </section>
 
@@ -26,163 +60,148 @@ function Main() {
         <nav className="menu__list">
           <ul className="menu__list-links">
             <li>
-              <a href="#about" onClick={behaviorSmooth} className="menu__link">
+              <Link
+                to={{ pathname: "#about" }}
+                onClick={behaviorSmooth}
+                className="menu__link"
+              >
                 О проекте
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#tech" onClick={behaviorSmooth} className="menu__link">
+              <Link
+                to={{ pathname: "#tech" }}
+                onClick={behaviorSmooth}
+                className="menu__link"
+              >
                 Технологии
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#person" onClick={behaviorSmooth} className="menu__link">
+              <Link
+                to={{ pathname: "#person" }}
+                onClick={behaviorSmooth}
+                className="menu__link"
+              >
                 Студент
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
       </section>
 
-      <section className="about" id="about">
-        <div className="about__box">
-          <h2 className="about__title">О проекте</h2>
-          <div className="about__block">
-            <div className="about__info">
-              <h3 className="info__title">Дипломный проект включал 5 этапов</h3>
-              <p className="info__description">
+      <section className="project main__section" id="about">
+        <div className="main__section-container main__section-container_size_m">
+          <h2 className="section__title">О проекте</h2>
+          <ul className="project-desc">
+            <li className="project-desc__cell">
+              <h3 className="project-desc__heading">
+                Дипломный проект включал 5 этапов
+              </h3>
+              <p className="project-desc__text">
                 Составление плана, работу над бэкендом, вёрстку, добавление
                 функциональности и финальные доработки.
               </p>
-            </div>
-            <div className="about__info">
-              <h3 className="info__title">
+            </li>
+            <li className="project-desc__cell">
+              <h3 className="project-desc__heading">
                 На выполнение диплома ушло 5 недель
               </h3>
-              <p className="info__description">
+              <p className="project-desc__text">
                 У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
                 соблюдать, чтобы успешно защититься.
               </p>
-            </div>
-          </div>
-          <div className="about__grid">
-            <div className="about__period">
-              <p className="period__title">1 неделя</p>
-              <p className="period__description">Back-end</p>
-            </div>
-            <div className="about__period">
-              <p className="period__title">4 недели</p>
-              <p className="period__description">Front-end</p>
-            </div>
-          </div>
-        </div>
-      </section>
+            </li>
+          </ul>
 
-      <section className="tech" id="tech">
-        <div className="tech__box">
-          <h2 className="about__title">Технологии</h2>
-          <h3 className="tech__title">7 технологий</h3>
-          <p className="tech__description">
-            На курсе веб-разработки мы освоили технологии, которые применили в
-            дипломном проекте.
-          </p>
-          <ul className="tech__list">
-            <li className="tech__link">HTML</li>
-            <li className="tech__link">CSS</li>
-            <li className="tech__link">JS</li>
-            <li className="tech__link">React</li>
-            <li className="tech__link">Git</li>
-            <li className="tech__link">Express.js</li>
-            <li className="tech__link">mongoDB</li>
+          <ul className="project-timing">
+            <li className="project-timing__cell">
+              <p className="project-timing__heading">1 неделя</p>
+              <p className="project-timing__text">Back-end</p>
+            </li>
+            <li className="project-timing__cell">
+              <p className="project-timing__heading">4 недели</p>
+              <p className="project-timing__text">Front-end</p>
+            </li>
           </ul>
         </div>
       </section>
 
-      <section className="person" id="person">
-        <div className="tech__box">
-          <h2 className="about__title">Студент</h2>
-          <div className="person__grid">
-            <div className="person__container">
-              <h3 className="tech__title person__title_position">Андрей</h3>
-              <p className="person__subtitle">Фронтенд-разработчик, 28 лет</p>
-              <p className="tech__description person__description">
-                Я родился и живу в Саратове, закончил факультет экономики СГУ. У
-                меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь
-                бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ
-                Контур». После того, как прошёл курс по веб-разработке, начал
-                заниматься фриланс-заказами и ушёл с постоянной работы.
-              </p>
-              <div className="person__links">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="person__link"
-                >
-                  Facebook
-                </a>
-                <a
-                  href="https://github.com/space900"
-                  rel="noreferrer"
-                  target="_blank"
-                  className="person__link"
-                >
-                  github
-                </a>
-              </div>
-            </div>
-            <img className="person__image" src={person} alt="фото Андрея" />
+      <section className="techs main__section" id="tech">
+        <div className="main__section-container main__section-container_size_m">
+          <h2 className="section__title">Технологии</h2>
+          <div className="techs__content">
+            <h2 className="techs__subtitle">7 технологий</h2>
+            <p className="techs__text">
+              На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые
+              применили в&nbsp;дипломном проекте.
+            </p>
           </div>
-          <div className="person__portfolio">
-            <h3 className="person__subtitle portfolio__description">
-              Портфолио
-            </h3>
-            <ul className="portfolio__list">
-              <li className="portfolio__links">
-                <a
-                  className="portfolio__link"
-                  href="https://github.com"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Статичный сайт
-                  <img
-                    src={portfolio}
-                    className="portfolio__icon"
-                    alt="иконка"
-                  />
-                </a>
+          <ul className="techs__list">
+            {techList.map((item, i) => (
+              <li className="techs__list-item" key={i}>
+                {item}
               </li>
-              <li className="portfolio__links">
-                <a
-                  className="portfolio__link"
-                  href="https://github.com"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Адаптивный сайт
-                  <img
-                    src={portfolio}
-                    className="portfolio__icon"
-                    alt="иконка"
-                  />
-                </a>
-              </li>
-              <li className="portfolio__links">
-                <a
-                  className="portfolio__link"
-                  href="https://github.com"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Одностраничное приложение
-                  <img
-                    src={portfolio}
-                    className="portfolio__icon"
-                    alt="иконка"
-                  />
-                </a>
-              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="about-person main__section" id="person">
+        <div className="main__section-container main__section-container_size_s">
+          <h2 className="section__title">Студент</h2>
+          <div className="about-person__content">
+            <img
+              className="about-person__image"
+              src={personImage}
+              alt="Фото студента"
+            />
+            <div className="about-person__student">
+              <div className="about-person__bio">
+                <h2 className="about-person__subtitle">Андрей</h2>
+                <p className="about-person__headline">
+                  Фронтенд-разработчик, 28 лет
+                </p>
+                <p className="about-person__text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </p>
+              </div>
+              <ul className="about-person__links">
+                {linksAbout.map((item, index) => (
+                  <li key={index}>
+                    <Link
+                      className="about-person__link"
+                      to={{ pathname: item.link }}
+                      target="_blank"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="portfolio">
+            <h3 className="portfolio__title">Портфолио</h3>
+            <ul className="portfolio__links">
+              {portfolioList.map((item, i) => (
+                <li className="portfolio__links-item" key={i}>
+                  <Link
+                    className="portfolio__link"
+                    to={{ pathname: item.link }}
+                    target="_blank"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

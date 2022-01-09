@@ -1,0 +1,40 @@
+.profile-btn {
+  padding: 5px 11px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  text-decoration: none;
+
+  color: var(--color-text-primary);
+  background: none;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  transition: 0.3s;
+}
+
+.profile-btn__icon {
+  background-color: #f4f4f4;
+  color: var(--color-text-primary);
+  border-radius: 4px;
+  padding: 8px 7px;
+  transition: 0.3s ;
+}
+
+.profile-btn:hover {
+  opacity: 0.8;
+}
+
+.profile-btn:hover .profile-btn__icon {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.header_place_landing .profile-btn {
+  color: var(--color-text-tertiary);
+}
+
+.header_place_landing .profile-btn:hover {
+  opacity: 0.8;
+}
