@@ -1,4 +1,5 @@
-## Этап №3 дипломного проекта Яндекс.Практикум. (React & JSX)
+## Movies-explorer-frontend
+Фронтенд-часть приложения дипломного проекта MoviesExplorer со следующими возможностями: авторизации и регистрации пользователей, операции с фильмами и пользователями.
 ### Макет диплома: (https://www.figma.com/file/FVjMsOxim2RildL3v4ynK4/Diploma-main)
 * Ссылка на API: https://api.space.nomoredomains.rocks
 * Ссылка на Фронтенд: https://space.nomoredomains.rocks
