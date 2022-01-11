@@ -51,52 +51,21 @@ function App() {
 
   const history = useHistory();
 
-  // const tokenCheck = React.useCallback(() => {
-  //   mainApi.checkToken()
-  //     .then((res) => {
-  //       console.log(res, 'res')
-  //       if (res) {
-  //         setLoggedIn(true);
-  //         console.log(res, 'res')
-  //       }
-  //     })
-  //     .catch((e) => {
-  //       console.log(e, "ошибка с токеном");
-  //     })
-  // }, [history]);
-
-  // React.useEffect(() => {
-  //   tokenCheck();
-  // }, [tokenCheck]);
-
-  // React.useEffect(() => {
-  //   if (loggedIn) {
-
-  //   }
-  // }, [loggedIn, history]);
-
-  // React.useEffect(() => {
-  //   if (loggedIn)
-  // })
-
   React.useEffect(() => {
     if (loggedIn) {
       const localUserData = localStorage.getItem("currentUser");
       const localMoviesData = localStorage.getItem("movies");
       const localSavedMoviesData = localStorage.getItem("savedMovies");
-      // console.log(localUserData, "если логин? локал юзер")
-
       if (!localUserData) {
         mainApi
           .getUserInfo()
           .then((res) => {
-            // console.log(localUserData, "если не локал юзер?")
             localStorage.setItem("currentUser", JSON.stringify(res.data));
             setCurrentUser(res.data);
-            console.log("movies", localStorage.getItem("movies"));
+            // console.log("movies", localStorage.getItem("movies"));
           })
           .catch((e) => {
-            console.log("movies", localStorage.getItem("movies"));
+            // console.log("movies", localStorage.getItem("movies"));
             switch (e) {
               case 400:
               case 401:
@@ -114,7 +83,6 @@ function App() {
           });
       } else {
         setCurrentUser(JSON.parse(localUserData));
-        // console.log(localUserData, "в противном случае")
       }
 
       if (!localMoviesData) {
@@ -123,8 +91,6 @@ function App() {
           .then((res) => {
             localStorage.setItem("movies", JSON.stringify(res.data));
             setMoviesData(res.data);
-            // console.log(res.data, 'res.data movie');
-            // console.log(res, 'res movie');
           })
           .catch((e) => console.log(`Ошибка при получении данных: ${e}`));
       } else {
@@ -146,25 +112,14 @@ function App() {
   }, [loggedIn]);
 
   const handleTokenCheck = React.useCallback(() => {
-    // let token = localStorage.getItem("jwt")
-    // const localUserData = localStorage.getItem("currentUser");
-    // console.log(localUserData, "localUserData");
     mainApi
       .getUserInfo()
       .then(() => {
-        console.log("movies", localStorage.getItem("movies"));
-        // data
-        // let token = localStorage.getItem("jwt")
-        // localStorage.getItem("jwt", data.token)
-
-        // console.log(localUserData, "localUserData");
-        // console.log(data, 'data');
-        // console.log(token, 'token');
-        // console.log(data.token);
+        // console.log("movies", localStorage.getItem("movies"));
         setLoggedIn(true);
       })
       .catch((e) => {
-        console.log("movies", localStorage.getItem("movies"));
+        // console.log("movies", localStorage.getItem("movies"));
         switch (e) {
           case 400:
           case 401:
@@ -188,29 +143,6 @@ function App() {
   React.useEffect(() => {
     handleTokenCheck();
   }, [handleTokenCheck]);
-
-  // const handleTokenCheck = () => {
-  //   const token = localStorage.getItem('token');
-
-  //   console.log('вот он токен', token);
-
-  //     mainApi.getUserInfo()
-  //     .then((res) => {
-  //       if (res.data.email) {
-  //         console.log(mainApi.getUserInfo)
-  //         console.log(res.data, 'res.data');
-  //         setCurrentUser(res.data)
-  //         setLoggedIn(true);
-  //       }
-  //     })
-  //     .catch((err)=>{
-  //       console.log(err);
-
-  //       setLoggedIn(false);
-  //       localStorage.clear()
-  //     })
-
-  // }
 
   const handleRegistration = (data) => {
     setRegisterSubmitButtonText("Выполняется регистрация...");
@@ -270,17 +202,11 @@ function App() {
   };
 
   const handleSignOut = () => {
-    // let localUserData = localStorage.getItem("currentUser");
     mainApi
       .signOut()
       .then(() => {
         setLoggedIn(false);
-
-        // localUserData = null;
-        // console.log(localUserData," обнуление")
-        // localStorage.removeItem("currentUser");
         localStorage.clear();
-        // location.reload()
         history.push("/");
       })
       .catch((e) => {

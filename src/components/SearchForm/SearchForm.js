@@ -40,7 +40,6 @@ function SearchForm({ onCheckboxChange, onSubmit, handleShortMovies, isSavedMovi
   const handleCheckboxChange = (e) => {
     const target = e.target;
     onCheckboxChange(target.checked);
-    // localStorage.setItem("checkedBox", target.checked);
   };
 
   return (

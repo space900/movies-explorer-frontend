@@ -87,7 +87,6 @@ function Movies({ moviesData, savedMoviesData, onNoMoviesData, onCardSaveToggle 
   const handleCheckboxChange = (state) => {
     setIsShortfilmCheckboxOn(state);
     console.log("state", state);
-    // console.log('set', setIsShortfilmCheckboxOn(state));
   };
 
   const handleNoMoviesData = () => {
